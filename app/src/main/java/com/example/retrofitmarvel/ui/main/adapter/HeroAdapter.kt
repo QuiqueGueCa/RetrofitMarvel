@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofitmarvel.R
+import com.example.retrofitmarvel.data.domain.model.hero.HeroModel
 import com.example.retrofitmarvel.databinding.ItemHeroBinding
 
-class HeroAdapter(private val dataSet: ArrayList<String>) :
+class HeroAdapter(private val dataSet: MutableList<HeroModel>) :
     RecyclerView.Adapter<HeroAdapter.ViewHolder>() {
 
 
@@ -21,14 +22,14 @@ class HeroAdapter(private val dataSet: ArrayList<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.tvNameHero.text = dataSet[position]
+        holder.binding.tvNameHero.text = dataSet[position].name
     }
 
     override fun getItemCount(): Int = dataSet.size
 
-    fun refreshData(names: ArrayList<String>) {
+    fun refreshData(heroes: MutableList<HeroModel>) {
         dataSet.clear()
-        dataSet.addAll(names)
+        dataSet.addAll(heroes)
         notifyDataSetChanged()
     }
 }
