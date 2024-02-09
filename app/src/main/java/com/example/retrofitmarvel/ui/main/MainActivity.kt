@@ -19,8 +19,19 @@ class MainActivity : AppCompatActivity() {
 
         setupAdapter()
 
+        //lifecycleScope.launch { getMarvel() }
+
 
     }
+
+    /*private suspend fun getMarvel(){
+        val remoteDataSource = DataProvider.getInstance(RemoteDataSource.getInstance(RetrofitClient.getInstance().getApiServices()))
+
+        val listMarvel = remoteDataSource.getListHeroes().collect{
+            println("|||||||||||||||||||||||||||||||||||||||||||||||||||11")
+            println(it)
+        }
+    }*/
 
     private fun setupAdapter() {
         mAdapter = HeroAdapter(arrayListOf())

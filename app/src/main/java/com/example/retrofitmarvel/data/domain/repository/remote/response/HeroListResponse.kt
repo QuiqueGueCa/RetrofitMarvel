@@ -11,7 +11,7 @@ data class HeroListResponse(
     val total: Int?,
     @SerializedName("count")
     val count: Int?,
-    @SerializedName("reults")
+    @SerializedName("results")
     val results: List<HeroResponse>?
 
 )
