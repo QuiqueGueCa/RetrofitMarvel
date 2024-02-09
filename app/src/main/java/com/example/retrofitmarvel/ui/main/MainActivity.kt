@@ -2,9 +2,14 @@ package com.example.retrofitmarvel.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.retrofitmarvel.data.domain.repository.DataProvider
+import com.example.retrofitmarvel.data.domain.repository.remote.RemoteDataSource
+import com.example.retrofitmarvel.data.domain.repository.remote.RetrofitClient
 import com.example.retrofitmarvel.databinding.ActivityMainBinding
 import com.example.retrofitmarvel.ui.main.adapter.HeroAdapter
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,19 +24,23 @@ class MainActivity : AppCompatActivity() {
 
         setupAdapter()
 
-        //lifecycleScope.launch { getMarvel() }
+        lifecycleScope.launch { getMarvel() }
 
 
     }
 
-    /*private suspend fun getMarvel(){
-        val remoteDataSource = DataProvider.getInstance(RemoteDataSource.getInstance(RetrofitClient.getInstance().getApiServices()))
+    private suspend fun getMarvel() {
+        val remoteDataSource = DataProvider.getInstance(
+            RemoteDataSource.getInstance(
+                RetrofitClient.getInstance().getApiServices()
+            )
+        )
 
-        val listMarvel = remoteDataSource.getListHeroes().collect{
+        val listMarvel = remoteDataSource.getListHeroes().collect {
             println("|||||||||||||||||||||||||||||||||||||||||||||||||||11")
             println(it)
         }
-    }*/
+    }
 
     private fun setupAdapter() {
         mAdapter = HeroAdapter(arrayListOf())
