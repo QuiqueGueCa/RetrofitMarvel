@@ -1,6 +1,6 @@
 package com.example.retrofitmarvel.data.domain.repository
 
-import com.example.retrofitmarvel.data.domain.repository.remote.response.MarvelResponse
+import com.example.retrofitmarvel.data.domain.model.hero.MarvelModel
 import kotlinx.coroutines.flow.Flow
 
 class DataProvider(private val remoteDataSource: DataSource) : DataSource {
@@ -17,7 +17,7 @@ class DataProvider(private val remoteDataSource: DataSource) : DataSource {
         }
     }
 
-    override fun getListHeroes(): Flow<MarvelResponse> {
+    override fun getListHeroes(): Flow<MarvelModel> {
         return remoteDataSource.getListHeroes()
     }
 }

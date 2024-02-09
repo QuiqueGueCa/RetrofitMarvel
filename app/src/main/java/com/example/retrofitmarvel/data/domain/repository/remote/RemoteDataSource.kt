@@ -1,7 +1,8 @@
 package com.example.retrofitmarvel.data.domain.repository.remote
 
+import com.example.retrofitmarvel.data.domain.model.hero.MarvelModel
 import com.example.retrofitmarvel.data.domain.repository.DataSource
-import com.example.retrofitmarvel.data.domain.repository.remote.response.MarvelResponse
+import com.example.retrofitmarvel.data.domain.repository.remote.mapper.hero.MarvelMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -18,9 +19,11 @@ class RemoteDataSource(private val remoteApiService: RemoteApiService) : DataSou
         }
     }
 
-    override fun getListHeroes(): Flow<MarvelResponse> = flow {
+    override fun getListHeroes(): Flow<MarvelModel> = flow {
         emit(
-            remoteApiService.getMarvel().body()!!
+            MarvelMapper().fromResponse(
+                remoteApiService.getMarvel().body()!!
+            )
         )
     }
 }

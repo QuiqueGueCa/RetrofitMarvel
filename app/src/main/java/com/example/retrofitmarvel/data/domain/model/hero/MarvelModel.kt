@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MarvelModel(
-    val heroesListModel: HeroesListModel
+    val heroListModel: HeroListModel
 ) : Parcelable

@@ -1,8 +1,8 @@
 package com.example.retrofitmarvel.data.domain.repository
 
-import com.example.retrofitmarvel.data.domain.repository.remote.response.MarvelResponse
+import com.example.retrofitmarvel.data.domain.model.hero.MarvelModel
 import kotlinx.coroutines.flow.Flow
 
 interface DataSource {
-    fun getListHeroes(): Flow<MarvelResponse>
+    fun getListHeroes(): Flow<MarvelModel>
 }
