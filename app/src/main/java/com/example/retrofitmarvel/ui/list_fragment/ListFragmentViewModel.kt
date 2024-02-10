@@ -1,4 +1,4 @@
-package com.example.retrofitmarvel.ui.main
+package com.example.retrofitmarvel.ui.list_fragment
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,19 +9,20 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val getMarvelUseCase: GetMarvelUseCase) : ViewModel() {
+class ListFragmentViewModel(private val getMarvelUseCase: GetMarvelUseCase) : ViewModel() {
 
     private val _heroes = MutableStateFlow<MutableList<HeroModel>>(mutableListOf())
     val heroes: StateFlow<MutableList<HeroModel>> = _heroes
-
+    private val heroesList = mutableListOf<HeroModel>()
+    private var page = 0
+    private val pageSize = 10
     fun getHeroes() {
         viewModelScope.launch(Dispatchers.IO) {
-            getMarvelUseCase().collect {
-                val heroesList = mutableListOf<HeroModel>()
+            getMarvelUseCase(pageSize, page * pageSize).collect {
                 heroesList.addAll(it.heroListModel.results)
                 _heroes.value = heroesList
             }
         }
+        page++
     }
-
 }

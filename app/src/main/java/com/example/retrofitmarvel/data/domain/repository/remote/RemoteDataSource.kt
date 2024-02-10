@@ -19,10 +19,10 @@ class RemoteDataSource(private val remoteApiService: RemoteApiService) : DataSou
         }
     }
 
-    override fun getListHeroes(): Flow<MarvelModel> = flow {
+    override fun getListHeroes(limit: Int, offset: Int): Flow<MarvelModel> = flow {
         emit(
             MarvelMapper().fromResponse(
-                remoteApiService.getMarvel().body()!!
+                remoteApiService.getMarvel(limit, offset).body()!!
             )
         )
     }

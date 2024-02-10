@@ -5,7 +5,7 @@ import com.example.retrofitmarvel.data.domain.repository.DataProvider
 import kotlinx.coroutines.flow.Flow
 
 class GetMarvelUseCase(private val dataProvider: DataProvider) {
-    operator fun invoke(): Flow<MarvelModel> {
-        return dataProvider.getListHeroes()
+    operator fun invoke(limit: Int, offset: Int): Flow<MarvelModel> {
+        return dataProvider.getListHeroes(limit, offset)
     }
 }

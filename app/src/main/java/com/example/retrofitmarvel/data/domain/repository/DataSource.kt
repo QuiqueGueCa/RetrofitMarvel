@@ -4,5 +4,5 @@ import com.example.retrofitmarvel.data.domain.model.hero.MarvelModel
 import kotlinx.coroutines.flow.Flow
 
 interface DataSource {
-    fun getListHeroes(): Flow<MarvelModel>
+    fun getListHeroes(limit: Int, offset: Int): Flow<MarvelModel>
 }

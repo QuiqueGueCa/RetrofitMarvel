@@ -17,7 +17,7 @@ class DataProvider(private val remoteDataSource: DataSource) : DataSource {
         }
     }
 
-    override fun getListHeroes(): Flow<MarvelModel> {
-        return remoteDataSource.getListHeroes()
+    override fun getListHeroes(limit: Int, offset: Int): Flow<MarvelModel> {
+        return remoteDataSource.getListHeroes(limit, offset)
     }
 }
