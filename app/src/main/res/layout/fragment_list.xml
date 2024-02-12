@@ -15,18 +15,23 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="@dimen/commonMargin"
+            android:contentDescription="@string/pictureExplanantion"
             android:src="@drawable/marvel_logo"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/pictureExplanantion"
             android:src="@drawable/marvel_heroes"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/recyclerView" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/recyclerView"
+            tools:ignore="ImageContrastCheck,VisualLintBounds" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

@@ -38,6 +38,13 @@ class ListFragment : Fragment(), HeroAdapter.CellClickListener {
 
         mViewModel.getHeroes()
 
+        setupScrollListener()
+
+
+        return mBinding.root
+    }
+
+    private fun setupScrollListener() {
         mBinding.recyclerView.addOnScrollListener(
             object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -55,7 +62,6 @@ class ListFragment : Fragment(), HeroAdapter.CellClickListener {
                     }
                 }
             })
-        return mBinding.root
     }
 
     private fun setupViewModel() {
